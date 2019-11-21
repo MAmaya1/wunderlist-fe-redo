@@ -12,13 +12,13 @@ const TaskList = props => {
         <div>
             {props.todos.map(todo => (
                 <Todo
+                    key={todo.id}
                     id={todo.id}
                     item={todo.item}
                     description={todo.description}
                     due_date={todo.due_date}
                 />
             ))}
-            <Link to="add-todo">Add New Item</Link>
         </div>
     )
 }

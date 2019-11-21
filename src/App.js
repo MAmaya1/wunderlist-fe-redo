@@ -20,7 +20,6 @@ function App() {
         <Route path="/login" component={LoginForm}/>
         <Route path="/signup" component={RegistrationForm}/>
         <PrivateRoute path="/private" component={LandingView}/>
-        <Route path="/add-todo" component={AddTodoForm}/>
       </div>
     </Router>
   );

@@ -20,7 +20,7 @@ const AddTodoForm = props => {
         axiosWithAuth()
             .post('https://backend-wunderlist.herokuapp.com/api/todos', newTask)
             .then(res => {
-
+                res && props.closeAddForm();
             })
             .catch(err => {
                 setError(err)
@@ -56,6 +56,7 @@ const AddTodoForm = props => {
                     onChange={event => setDueDate(event.target.value)}
                 />
                 <button onClick={event => addTodo(event, itemName, description, dueDate)}>Add To List</button>
+                <button onClick={() => props.closeAddForm()}>X</button>
             </form>
             {addError && (<p>Error adding task!</p>)}
         </div>
