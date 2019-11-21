@@ -7,7 +7,7 @@ const Todo = props => {
         <div>
             <p>{props.item}</p>
             <p>{props.description}</p>
-            <p>{props.due_date}</p>
+            <p>{(new Date(props.due_date)).toLocaleDateString()}</p>
         </div>
     )
 }
