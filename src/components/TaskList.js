@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Import Components
 
@@ -17,6 +18,7 @@ const TaskList = props => {
                     due_date={todo.due_date}
                 />
             ))}
+            <Link to="add-todo">Add New Item</Link>
         </div>
     )
 }
