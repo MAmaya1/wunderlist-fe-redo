@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Import axiosWithAuth
+
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 // Import Components
 
 import TaskList from '../components/TaskList';
@@ -13,7 +17,7 @@ const LandingView = () => {
     const [loadingErr, setError] = useState(null);
 
     useEffect(() => {
-        axios
+        axiosWithAuth()
             .get('https://backend-wunderlist.herokuapp.com/api/todos')
             .then(res => {
                 setTodos(res.data);
