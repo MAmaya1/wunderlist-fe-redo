@@ -19,7 +19,7 @@ const LandingView = () => {
                 setTodos(res.data);
             })
             .catch(err => {
-                console.log(err)
+                setError(err);
             })
     })
 
@@ -29,7 +29,7 @@ const LandingView = () => {
             {loadingErr ? (
                 <p>There was an error loading your tasks!</p>
             ) : (
-                <TaskList />
+                <TaskList todos={todos}/>
             )}
         </div>
     )
