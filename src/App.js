@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import LoginForm from './components/LoginForm';
+import PrivateRoute from './components/PrivateRoute';
+import TestLanding from './components/TestLanding';
 
 // App Component
 
@@ -15,6 +17,7 @@ function App() {
         <NavBar />
         <h1>Hello there!</h1>
         <Route path="/login" component={LoginForm}/>
+        <PrivateRoute path="/private" component={TestLanding} />
       </div>
     </Router>
   );

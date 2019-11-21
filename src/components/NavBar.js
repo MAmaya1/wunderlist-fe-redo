@@ -11,10 +11,11 @@ const NavigationBar = styled.nav`
 
 // NavBar Component
 
-const NavBar = props => {
+function NavBar() {
     return (
         <NavigationBar>
             <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/private">Home</NavLink>
         </NavigationBar>
     )
 }
