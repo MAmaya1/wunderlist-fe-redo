@@ -15,6 +15,7 @@ function NavBar() {
     return (
         <NavigationBar>
             <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
             <NavLink to="/private">Home</NavLink>
         </NavigationBar>
     )
