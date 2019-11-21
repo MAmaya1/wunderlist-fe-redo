@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import PrivateRoute from './components/PrivateRoute';
-import TestLanding from './components/TestLanding';
+import LandingView from './views/LandingView';
 
 // App Component
 
@@ -16,10 +16,9 @@ function App() {
     <Router>
       <div>
         <NavBar />
-        <h1>Hello there!</h1>
         <Route path="/login" component={LoginForm}/>
         <Route path="/signup" component={RegistrationForm}/>
-        <PrivateRoute path="/private" component={TestLanding}/>
+        <PrivateRoute path="/private" component={LandingView}/>
       </div>
     </Router>
   );
