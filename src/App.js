@@ -8,7 +8,6 @@ import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
 import PrivateRoute from './components/PrivateRoute';
 import LandingView from './views/LandingView';
-import AddTodoForm from './components/AddTodoForm';
 
 // App Component
 

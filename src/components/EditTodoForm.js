@@ -4,21 +4,22 @@ import React, { useState } from 'react';
 
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-// Add Todo Form
-
-const AddTodoForm = props => {
+const EditTodoForm = props => {
 
     const [itemName, setItemName] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
-    const [addError, setError] = useState(null);
+    const [updateError, setError] = useState(null);
 
-    const addTodo = (event, item, description, due_date) => {
-        const newTask = {item, description, due_date};
+    const updateTodo = (event, item, description, due_date, taskID) => {
+        const updatedTask = {item, description, due_date};
+        const id = taskID;
+
+        console.log(taskID)
 
         event.preventDefault();
         axiosWithAuth()
-            .post('https://backend-wunderlist.herokuapp.com/api/todos', newTask)
+            .put(`https://backend-wunderlist.herokuapp.com/api/todos/${id}`, updatedTask)
             .then(res => {
                 res && props.closeForm();
             })
@@ -32,7 +33,7 @@ const AddTodoForm = props => {
 
     return (
         <div>
-            <h2>Add a New Task</h2>
+            <h2>Edit Task</h2>
             <form>
                 <label htmlFor="item-name">Task</label>
                 <input
@@ -55,12 +56,12 @@ const AddTodoForm = props => {
                     value={dueDate}
                     onChange={event => setDueDate(event.target.value)}
                 />
-                <button onClick={event => addTodo(event, itemName, description, dueDate)}>Add To List</button>
+                <button onClick={event => updateTodo(event, itemName, description, dueDate, props.taskID)}>Update</button>
                 <button onClick={() => props.closeForm()}>X</button>
             </form>
-            {addError && (<p>Error adding task!</p>)}
+            {updateError && (<p>Error updating task!</p>)}
         </div>
     )
 }
 
-export default AddTodoForm;
+export default EditTodoForm;

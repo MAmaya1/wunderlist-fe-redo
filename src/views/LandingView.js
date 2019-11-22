@@ -8,6 +8,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 import TaskList from '../components/TaskList';
 import AddTodoForm from '../components/AddTodoForm';
+import EditTodoForm from '../components/EditTodoForm';
 
 // Landing View
 
@@ -15,19 +16,29 @@ const LandingView = () => {
 
     const [todos, setTodos] = useState([]);
     const [loadingErr, setError] = useState(null);
-    const [addFormOpen, setFormOpen] = useState(false);
+    const [addFormOpen, setAddFormOpen] = useState(false);
+    const [editFormOpen, setEditFormOpen] = useState(false);
+    const [taskID, setTaskID] = useState('');
 
 // Opens "Add Task" form
 
     const openAddForm = event => {
         event.preventDefault();
-        setFormOpen(true);
+        setAddFormOpen(true);
     }
 
-// Closes "Add Task" form on submission or X click
+// Opens "Edit Task" form
 
-    const closeAddForm = () => {
-        setFormOpen(false);
+    const openEditForm = (taskID) => {
+        setEditFormOpen(true);
+        setTaskID(taskID);
+    }
+
+// Closes forms on submission or X click
+
+    const closeForm = () => {
+        setAddFormOpen(false);
+        setEditFormOpen(false);
     }
 
 // Grabs data on component render
@@ -49,17 +60,29 @@ const LandingView = () => {
             {loadingErr ? (
                 <p>There was an error loading your tasks!</p>
             ) : (
-                <TaskList todos={todos}/>
+                <TaskList 
+                    todos={todos}
+                    openEditForm={openEditForm}
+                />
             )}
 
         {/* Pop Up "Add Task" Form */}
 
             {addFormOpen && (
                 <AddTodoForm 
-                    closeAddForm={closeAddForm}
+                    closeForm={closeForm}
                 />
             )}
             <button onClick={event => openAddForm(event)}>+</button>
+
+         {/* Pop Up "Edit Task" Form */}
+
+            {editFormOpen && (
+                <EditTodoForm
+                    closeForm={closeForm}
+                    taskID={taskID}
+                />
+            )}
         </div>
     )
 }

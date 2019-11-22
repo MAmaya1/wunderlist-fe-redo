@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Import Components
 
@@ -17,6 +16,7 @@ const TaskList = props => {
                     item={todo.item}
                     description={todo.description}
                     due_date={todo.due_date}
+                    openEditForm={props.openEditForm}
                 />
             ))}
         </div>
