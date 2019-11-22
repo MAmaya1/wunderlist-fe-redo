@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+// Edit To Do Form
+
 const EditTodoForm = props => {
 
     const [itemName, setItemName] = useState('');
@@ -14,8 +16,6 @@ const EditTodoForm = props => {
     const updateTodo = (event, item, description, due_date, taskID) => {
         const updatedTask = {item, description, due_date};
         const id = taskID;
-
-        console.log(taskID)
 
         event.preventDefault();
         axiosWithAuth()
